@@ -445,6 +445,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = '[Git] Files' })
       vim.keymap.set('n', '<leader>gt', builtin.git_stash, { desc = '[Git] Stash' })
       vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[Git] Status' })
+      vim.keymap.set('n', '<leader>gm', function()
+        builtin.git_commits {
+          git_command = { 'git', 'log', '--oneline', '--decorate', 'main..HEAD' },
+        }
+      end, { desc = '[Git] Commits ahead of main' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
