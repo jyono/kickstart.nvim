@@ -437,9 +437,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      vim.keymap.set('n', '<leader>g', builtin.git_bcommits, { desc = '[Git]' })
-      vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, { desc = '[Git] Buffer Commits' })
+      vim.keymap.set('n', '<leader>g', '', { desc = '[Git]' })
+      vim.keymap.set('n', '<leader>gl', builtin.git_bcommits, { desc = '[Git] Buffer Commits' })
       vim.keymap.set('n', '<leader>gr', builtin.git_bcommits_range, { desc = '[Git] Buffer Commits Range' })
+      vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[Git] Branches' })
       vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = '[Git] Commits' })
       vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = '[Git] Files' })
       vim.keymap.set('n', '<leader>gt', builtin.git_stash, { desc = '[Git] Stash' })
