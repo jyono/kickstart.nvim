@@ -205,6 +205,18 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- Open terminal in horizontal split
+vim.keymap.set('n', '<leader>th', ':split | terminal<CR>', { desc = 'Terminal horizontal split' })
+
+-- Open terminal in vertical split
+vim.keymap.set('n', '<leader>tv', ':vsplit | terminal<CR>', { desc = 'Terminal vertical split' })
+
+-- Open terminal in new tab
+vim.keymap.set('n', '<leader>tt', ':tabnew | terminal<CR>', { desc = 'Terminal in new tab' })
+
+-- Toggle terminal (requires a plugin like toggleterm.nvim)
+vim.keymap.set('n', '<leader>tf', ':ToggleTerm<CR>', { desc = 'Toggle floating terminal' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -475,7 +487,14 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('nvim-tree').setup()
+      vim.keymap.set('n', '<leader>x', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+    end,
+  },
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
