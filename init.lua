@@ -347,6 +347,17 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
     lazy = false,
+    opts = {
+      filesystem = {
+        visible = true,
+        window = {
+          mappings = {
+            ['.'] = 'set_root', -- Set current directory as root
+            ['H'] = 'toggle_hidden', -- Toggle hidden files with 'H'
+          },
+        },
+      },
+    },
   },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -951,7 +962,6 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
