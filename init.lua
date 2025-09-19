@@ -213,6 +213,10 @@ vim.keymap.set('n', '<leader>tf', ':ToggleTerm<CR>', { desc = 'Toggle floating t
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- paste does not yank in visual mode
+-- Make Visual mode paste not clobber the default register
+vim.keymap.set('x', 'p', '"_dP', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
