@@ -16,6 +16,7 @@ return {
   opts = {
     filesystem = {
       window = {
+        use_libuv_file_watcher = true,
         mappings = {
           ['\\'] = 'close_window',
         },
