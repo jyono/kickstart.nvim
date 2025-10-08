@@ -790,11 +790,9 @@ require('lazy').setup({
 
               -- Hover and signature help
               hoverKind = 'FullDocumentation', -- Show full documentation in hover
-              usePlaceholders = true, -- Insert placeholders for function arguments
 
               -- Import management
               gofumpt = true, -- Use `gofumpt` formatting style
-              completeUnimported = true, -- Suggest symbols from unimported packages
               directoryFilters = { '-vendor' }, -- Exclude vendor directories from analysis
             },
           },
@@ -806,7 +804,7 @@ require('lazy').setup({
                 buffer = bufnr,
                 callback = function()
                   vim.lsp.buf.code_action {
-                    context = { only = { 'source.organizeImports' } },
+                    context = { diagnostics = {}, only = { 'source.organizeImports' } },
                     apply = true,
                   }
                 end,
