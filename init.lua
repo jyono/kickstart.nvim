@@ -761,7 +761,59 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        gopls = {},
+        gopls = {
+          settings = {
+            gopls = {
+              -- Completion settings
+              completeUnimported = true, -- Suggest symbols from packages that are not yet imported
+              usePlaceholders = true, -- Insert argument placeholders for functions
+              deepCompletion = true, -- Include deep completions (e.g., struct fields)
+              matcher = 'Fuzzy', -- Matching algorithm for completions
+              linksInHover = true, -- Show documentation links in hover popups
+
+              -- Static analysis and diagnostics
+              staticcheck = true, -- Enable additional static analysis checks
+              analyses = {
+                unusedparams = true, -- Detect unused function parameters
+                nilness = true, -- Detect nil pointer errors
+                unusedwrite = true, -- Detect assignments that are never read
+                shadow = true, -- Detect variable shadowing
+              },
+
+              -- Code lenses
+              codelenses = {
+                generate = true, -- Enable 'go generate' code lens
+                gc_details = true, -- Show memory details on functions
+                tidy = true, -- Enable 'go mod tidy' lens
+                test = true, -- Enable run/test lenses
+              },
+
+              -- Hover and signature help
+              hoverKind = 'FullDocumentation', -- Show full documentation in hover
+              usePlaceholders = true, -- Insert placeholders for function arguments
+
+              -- Import management
+              gofumpt = true, -- Use `gofumpt` formatting style
+              completeUnimported = true, -- Suggest symbols from unimported packages
+              directoryFilters = { '-vendor' }, -- Exclude vendor directories from analysis
+            },
+          },
+
+          -- Auto organize imports on save
+          on_attach = function(client, bufnr)
+            if client.name == 'gopls' then
+              vim.api.nvim_create_autocmd('BufWritePre', {
+                buffer = bufnr,
+                callback = function()
+                  vim.lsp.buf.code_action {
+                    context = { only = { 'source.organizeImports' } },
+                    apply = true,
+                  }
+                end,
+              })
+            end
+          end,
+        },
         pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
