@@ -1103,7 +1103,6 @@ require('lazy').setup({
         'python',
         'json',
         'toml',
-        'htlm',
         'css',
         'helm',
         'dockerfile',
