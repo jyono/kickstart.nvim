@@ -825,6 +825,15 @@ require('lazy').setup({
           on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
+
+            -- Disable format on save for this buffer
+            vim.api.nvim_buf_set_option(bufnr, 'formatoptions', '')
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = bufnr,
+              callback = function()
+                -- Do nothing, preventing format on save
+              end,
+            })
           end,
         },
         --
@@ -900,7 +909,15 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = {
+          c = true,
+          cpp = true,
+          typescript = true,
+          typescriptreact = true,
+          javascript = true,
+          javascriptreact = true,
+          python = true,
+        }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
