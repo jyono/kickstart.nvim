@@ -258,6 +258,49 @@ rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  -- your other plugins
+  {
+    -- TODO Set to use ccurl
+    -- Official installation from mistweaverco/kulala.nvim
+    'mistweaverco/kulala.nvim',
+    ft = { 'http', 'rest' }, -- Supports both .http and .rest files
+
+    opts = {
+      -- By default global keymaps are disabled
+      -- Set to true to enable all built-in keymaps
+      global_keymaps = false,
+    },
+    keys = {
+      -- Request execution
+      { '<leader>kr', '<cmd>lua require("kulala").run()<cr>', desc = 'Kulala: Run request' },
+      { '<leader>ka', '<cmd>lua require("kulala").run_all()<cr>', desc = 'Kulala: Run all requests' },
+      { '<leader>kR', '<cmd>lua require("kulala").replay()<cr>', desc = 'Kulala: Replay last request' },
+
+      -- View & Inspection
+      { '<leader>kt', '<cmd>lua require("kulala").toggle_view()<cr>', desc = 'Kulala: Toggle view' },
+      { '<leader>ki', '<cmd>lua require("kulala").inspect()<cr>', desc = 'Kulala: Inspect current request' },
+      { '<leader>ks', '<cmd>lua require("kulala").show_stats()<cr>', desc = 'Kulala: Show stats' },
+
+      -- Navigation
+      { '<leader>kn', '<cmd>lua require("kulala").jump_next()<cr>', desc = 'Kulala: Jump to next request' },
+      { '<leader>kp', '<cmd>lua require("kulala").jump_prev()<cr>', desc = 'Kulala: Jump to previous request' },
+
+      -- Copy/Paste & Scratchpad
+      { '<leader>kc', '<cmd>lua require("kulala").copy()<cr>', desc = 'Kulala: Copy as cURL' },
+      { '<leader>kC', '<cmd>lua require("kulala").from_curl()<cr>', desc = 'Kulala: Paste from cURL' },
+      { '<leader>kb', '<cmd>lua require("kulala").scratchpad()<cr>', desc = 'Kulala: Open scratchpad' },
+
+      -- Environment management
+      { '<leader>ke', '<cmd>lua require("kulala").set_selected_env()<cr>', desc = 'Kulala: Select environment' },
+      { '<leader>kg', '<cmd>lua require("kulala").download_graphql_schema()<cr>', desc = 'Kulala: Download GraphQL schema' },
+
+      -- Utility
+      { '<leader>kx', '<cmd>lua require("kulala").close()<cr>', desc = 'Kulala: Close' },
+      { '<leader>kD', '<cmd>lua require("kulala").clear_cached_files()<cr>', desc = 'Kulala: Clear cache' },
+    },
+  },
+
+  -- more plugins
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
@@ -1142,6 +1185,7 @@ require('lazy').setup({
   require 'kickstart.plugins.neo-tree',
   vim.keymap.set('n', '<leader>x', '<cmd>Neotree toggle<cr>', { desc = 'Toggle NeoTree' }),
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'custom.plugins',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
