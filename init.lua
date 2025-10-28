@@ -339,27 +339,6 @@ require('lazy').setup({
       end,
     },
   },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    lazy = false,
-    opts = {
-      filesystem = {
-        visible = false,
-        window = {
-          mappings = {
-            ['.'] = 'set_root', -- Set current directory as root
-            ['H'] = 'toggle_hidden', -- Toggle hidden files with 'H'
-          },
-        },
-      },
-    },
-  },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
