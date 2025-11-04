@@ -144,5 +144,18 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+    dap.configurations.go = dap.configurations.go or {}
+    table.insert(dap.configurations.go, {
+      type = 'go',
+      name = 'Attach remote (localhost:2345)',
+      mode = 'remote',
+      request = 'attach',
+      -- Connect to the port, not PID
+      port = 2345,
+      host = '127.0.0.1',
+      substitutePath = {
+        { from = '${workspaceFolder}', to = vim.fn.getcwd() },
+      },
+    })
   end,
 }

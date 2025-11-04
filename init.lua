@@ -791,27 +791,44 @@ require('lazy').setup({
               usePlaceholders = true, -- Insert argument placeholders for functions
               deepCompletion = true, -- Include deep completions (e.g., struct fields)
               matcher = 'Fuzzy', -- Matching algorithm for completions
+
+              -- Hover and signature help
+              hoverKind = 'FullDocumentation', -- Show full documentation in hover
+              linkTarget = 'pkg.go.dev',
               linksInHover = true, -- Show documentation links in hover popups
 
+              -- Static analysis and diagnostics
               -- Static analysis and diagnostics
               staticcheck = true, -- Enable additional static analysis checks
               analyses = {
                 unusedparams = true, -- Detect unused function parameters
-                nilness = true, -- Detect nil pointer errors
                 unusedwrite = true, -- Detect assignments that are never read
+                nilness = true, -- Detect nil pointer errors
                 shadow = true, -- Detect variable shadowing
+                useany = true, -- Recommend using 'any' instead of 'interface{}'
+                unusedvariable = true, -- Detect unused variables
+              },
+
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
               },
 
               -- Code lenses
               codelenses = {
-                generate = true, -- Enable 'go generate' code lens
                 gc_details = true, -- Show memory details on functions
+                generate = true, -- Enable 'go generate' code lens
+                regenerate_cgo = true, -- Regenerate cgo definitions
                 tidy = true, -- Enable 'go mod tidy' lens
+                upgrade_dependency = true, -- Upgrade dependencies
+                vendor = true, -- Vendor dependencies
                 test = true, -- Enable run/test lenses
               },
-
-              -- Hover and signature help
-              hoverKind = 'FullDocumentation', -- Show full documentation in hover
 
               -- Import management
               gofumpt = true, -- Use `gofumpt` formatting style
@@ -1183,7 +1200,8 @@ require('lazy').setup({
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
-  vim.keymap.set('n', '<leader>x', '<cmd>Neotree toggle<cr>', { desc = 'Toggle NeoTree' }),
+  vim.keymap.set('n', '<leader>x', '<cmd>Neotree toggle<cr>', { desc = 'NeoTree Toggle' }),
+  vim.keymap.set('n', '<leader>z', '<cmd>Neotree reveal<cr>', { desc = 'NeoTree Reveal' }),
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'custom.plugins',
 
