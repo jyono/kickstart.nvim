@@ -577,7 +577,7 @@ require('lazy').setup({
           prompt_title = 'Live Grep (All Files)',
           -- This function adds the flags to the underlying grep command
           additional_args = function(args)
-            return { '--hidden', '--no-ignore', '--no-ignore-parent' }
+            return { '--hidden', '--no-ignore', '--no-ignore-parent', '--glob=!**/.git/*' }
           end,
         }
       end, { desc = '[S]earch [H]idden [G]rep)' })
@@ -588,6 +588,7 @@ require('lazy').setup({
           hidden = true, -- Show hidden dotfiles
           no_ignore = true, -- Ignore .gitignore rules
           no_ignore_parent = true, -- Ignore .gitignore rules of all parents, too
+          file_ignore_patterns = { '.git/' }, -- <--- Explicitly remove the .git folder
         }
       end, { desc = 'Find All Files' })
     end,
