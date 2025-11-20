@@ -571,6 +571,25 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>shg', function()
+        builtin.live_grep {
+          prompt_title = 'Live Grep (All Files)',
+          -- This function adds the flags to the underlying grep command
+          additional_args = function(args)
+            return { '--hidden', '--no-ignore', '--no-ignore-parent' }
+          end,
+        }
+      end, { desc = '[S]earch [H]idden [G]rep)' })
+
+      vim.keymap.set('n', '<leader>shf', function()
+        builtin.find_files {
+          prompt_title = 'Find All Files (Hidden + Ignored)',
+          hidden = true, -- Show hidden dotfiles
+          no_ignore = true, -- Ignore .gitignore rules
+          no_ignore_parent = true, -- Ignore .gitignore rules of all parents, too
+        }
+      end, { desc = 'Find All Files' })
     end,
   },
   -- LSP Plugins
