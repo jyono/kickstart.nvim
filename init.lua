@@ -988,11 +988,17 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        sql = { 'sql-formatter' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        --formatters = {
+        ['sql-formatter'] = {
+          -- Change "postgresql" to "mysql", "mariadb", "bigquery", "sqlite", etc.
+          prepend_args = { '-l', 'postgresql' },
+        },
       },
     },
   },
