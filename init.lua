@@ -572,7 +572,7 @@ require('lazy').setup({
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
 
-      vim.keymap.set('n', '<leader>shg', function()
+      vim.keymap.set('n', '<leader>sag', function()
         builtin.live_grep {
           prompt_title = 'Live Grep (All Files)',
           -- This function adds the flags to the underlying grep command
@@ -580,9 +580,9 @@ require('lazy').setup({
             return { '--hidden', '--no-ignore', '--no-ignore-parent', '--glob=!**/.git/*' }
           end,
         }
-      end, { desc = '[S]earch [H]idden [G]rep)' })
+      end, { desc = '[S]earch [A]ll [G]rep)' })
 
-      vim.keymap.set('n', '<leader>shf', function()
+      vim.keymap.set('n', '<leader>saf', function()
         builtin.find_files {
           prompt_title = 'Find All Files (Hidden + Ignored)',
           hidden = true, -- Show hidden dotfiles
@@ -590,7 +590,7 @@ require('lazy').setup({
           no_ignore_parent = true, -- Ignore .gitignore rules of all parents, too
           file_ignore_patterns = { '.git/' }, -- <--- Explicitly remove the .git folder
         }
-      end, { desc = 'Find All Files' })
+      end, { desc = '[S]earch [A]ll [F]iles' })
     end,
   },
   -- LSP Plugins
