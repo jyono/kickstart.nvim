@@ -580,7 +580,7 @@ require('lazy').setup({
             return { '--hidden', '--no-ignore', '--no-ignore-parent', '--glob=!**/.git/*' }
           end,
         }
-      end, { desc = '[S]earch [A]ll [G]rep)' })
+      end, { desc = '[S]earch [A]ll Files [G]rep)' })
 
       vim.keymap.set('n', '<leader>saf', function()
         builtin.find_files {
