@@ -929,6 +929,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'sql-formatter',
+        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -977,6 +978,7 @@ require('lazy').setup({
           javascript = true,
           javascriptreact = true,
           python = true,
+          sql = true,
         }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
@@ -1193,6 +1195,8 @@ require('lazy').setup({
         'bash',
         'yaml',
         'sql',
+        'hcl',
+        'terraform',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -1211,6 +1215,14 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  {
+    'towolf/vim-helm',
+    event = 'BufReadPre',
+    config = function()
+      -- This plugin automatically detects helm files (including .tpl)
+      -- and sets the filetype to "helm" instead of "yaml"
+    end,
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
