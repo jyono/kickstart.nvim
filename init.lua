@@ -231,8 +231,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-local custom_git = require './lua/custom/git_links'
-vim.keymap.set({ 'n', 'v' }, '<leader>go', custom_git.open_github, { desc = 'Open in GitHub' })
+local git_links = require 'custom.git_links'
+vim.keymap.set({ 'n', 'v' }, '<leader>go', git_links.open_github, { desc = 'Open in GitHub' })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -765,7 +765,8 @@ require('lazy').setup({
       vim.diagnostic.config {
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
-        underline = { severity = vim.diagnostic.severity.ERROR },
+        -- underline = { severity = vim.diagnostic.severity.ERROR },
+        underline = true,
         signs = vim.g.have_nerd_font and {
           text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
