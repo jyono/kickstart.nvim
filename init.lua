@@ -554,23 +554,31 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+      vim.keymap.set('n', '<leader>sD', function()
+        local current_dir = vim.fn.expand '%:p:h' -- Gets the absolute path to the current file's folder
+        require('telescope.builtin').diagnostics {
+          cwd = current_dir,
+          -- This ensures it searches within the directory, not just the file
+          root_dir = current_dir,
+        }
+      end, { desc = '[S]earch [D]iagnostics in current directory' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      vim.keymap.set('n', '<leader>g', '', { desc = '[Git]' })
-      vim.keymap.set('n', '<leader>gl', builtin.git_bcommits, { desc = '[Git] Buffer Commits' })
-      vim.keymap.set('n', '<leader>gr', builtin.git_bcommits_range, { desc = '[Git] Buffer Commits Range' })
-      vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[Git] Branches' })
-      vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = '[Git] Commits' })
-      vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = '[Git] Files' })
-      vim.keymap.set('n', '<leader>gt', builtin.git_stash, { desc = '[Git] Stash' })
-      vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[Git] Status' })
-      vim.keymap.set('n', '<leader>gm', function()
-        builtin.git_commits {
-          git_command = { 'git', 'log', '--oneline', '--decorate', 'main..HEAD' },
-        }
-      end, { desc = '[Git] Commits ahead of main' })
+      -- vim.keymap.set('n', '<leader>g', '', { desc = '[Git]' })
+      -- vim.keymap.set('n', '<leader>gl', builtin.git_bcommits, { desc = '[Git] Buffer Commits' })
+      -- vim.keymap.set('n', '<leader>gr', builtin.git_bcommits_range, { desc = '[Git] Buffer Commits Range' })
+      -- vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[Git] Branches' })
+      -- vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = '[Git] Commits' })
+      -- vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = '[Git] Files' })
+      -- vim.keymap.set('n', '<leader>gt', builtin.git_stash, { desc = '[Git] Stash' })
+      -- vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[Git] Status' })
+      -- vim.keymap.set('n', '<leader>gm', function()
+      --   builtin.git_commits {
+      --     git_command = { 'git', 'log', '--oneline', '--decorate', 'main..HEAD' },
+      --   }
+      -- end, { desc = '[Git] Commits ahead of main' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -852,7 +860,6 @@ require('lazy').setup({
         gopls = {
           settings = {
             gopls = {
-              -- Use just ONE method for build flags to avoid conflicts
               buildFlags = {
                 '-tags',
                 'functional,integration,small,medium,large',
@@ -868,6 +875,9 @@ require('lazy').setup({
               hoverKind = 'FullDocumentation',
               linkTarget = 'pkg.go.dev',
               linksInHover = true,
+
+              -- Does this actually help?
+              expandWorkspaceToModule = true,
 
               -- Static analysis and diagnostics
               staticcheck = true, -- THIS automatically runs the officially supported staticcheck suite
