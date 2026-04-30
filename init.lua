@@ -253,6 +253,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.hl.on_yank() end,
 })
 
+-- Safer defaults when reading Markdown (e.g. cloned READMEs): modelines in .md are rare and
+-- can be abused; preview stays in-editor via render-markdown.nvim (no browser / Electron).
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('kickstart-markdown-safe-read', { clear = true }),
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.modeline = false
+  end,
+})
+
 local git_links = require 'custom.git_links'
 vim.keymap.set({ 'n', 'v' }, '<leader>go', git_links.open_github, { desc = 'Open in GitHub' })
 
@@ -425,6 +435,18 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
+  -- In-buffer Markdown viewing (no external preview server). LaTeX is off so formulas do not
+  -- spawn optional converters (utftex / latex2text). See :RenderMarkdown toggle
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
+    ft = { 'markdown', 'markdown.mdx' },
+    opts = {
+      latex = { enabled = false },
+      completions = { lsp = { enabled = true }, blink = { enabled = true } },
+    },
+  },
+
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     -- By default, Telescope is included and acts as your picker for everything.
@@ -587,6 +609,9 @@ require('lazy').setup({
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
+      -- Load before this plugin's config runs so get_lsp_capabilities() exists even when
+      -- LSP startup happens before VimEnter (e.g. `nvim file.py`).
+      { 'saghen/blink.cmp', version = '1.*' },
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
@@ -659,18 +684,18 @@ require('lazy').setup({
           --  For example, in C this would take you to the header.
           map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          -- Fuzzy find all the symbols in your current document.
-          --  Symbols are things like variables, functions, types, etc.
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+          -- Defer requiring Telescope until keypress: on `nvim file.py`, LspAttach can run
+          -- before VimEnter, when lazy.nvim has not loaded telescope.nvim yet.
+          --
+          -- Nvim 0.11+ sets *global* defaults grr/gri/grt/gO → vim.lsp.buf.* which uses
+          -- quickfix / loclist. Buffer-local maps here override those for this buffer.
+          map('grr', function() require('telescope.builtin').lsp_references() end, '[R]eferences')
+          map('gri', function() require('telescope.builtin').lsp_implementations() end, '[I]mplementation')
+          map('gO', function() require('telescope.builtin').lsp_document_symbols() end, 'Open Document Symbols')
 
-          -- Fuzzy find all the symbols in your current workspace.
-          --  Similar to document symbols, except searches over your entire project.
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+          map('gW', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, 'Open Workspace Symbols')
 
-          -- Jump to the type of the word under your cursor.
-          --  Useful when you're not sure what type a variable is and you want to see
-          --  the definition of its *type*, not where it was *defined*.
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+          map('grt', function() require('telescope.builtin').lsp_type_definitions() end, '[G]oto [T]ype Definition')
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           local function client_supports_method(client, method, bufnr)
