@@ -4,16 +4,15 @@
 
   Purpose
     Sets buffer-agnostic Neovim options (`vim.o` / `vim.opt`): editing feel,
-    UI chrome, search, splits, and persistence (e.g. undofile).
+    UI chrome, search, splits, line numbers, and persistence (e.g. undofile).
 
   Rationale
-    Centralizing options keeps behavior predictable and documents defaults in
-    one place. Clipboard is scheduled after UI enter to avoid slowing startup.
+    Centralizing options keeps behavior predictable. Line numbers use `vim.opt`
+    only (no duplicate `vim.o.number`). Clipboard is scheduled after UI enter to
+    avoid slowing startup.
 
   See `:help vim.o`, `:help option-list`, `:help 'clipboard'`.
 ]]
-
-vim.o.number = true
 
 vim.o.mouse = 'a'
 

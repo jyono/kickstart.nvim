@@ -45,7 +45,6 @@ return {
       'css',
       'helm',
       'dockerfile',
-      'bash',
       'yaml',
       'sql',
       'hcl',

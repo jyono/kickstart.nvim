@@ -42,7 +42,7 @@ local mods = {
   'plugins.kickstart.plugins.mini',
   'plugins.kickstart.plugins.treesitter',
   'plugins.kickstart.plugins.vim_helm',
-  'plugins.kickstart.plugins.neotest_golang',
+  'plugins.kickstart.plugins.toggleterm',
   'plugins.kickstart.plugins.mini_icons',
   'plugins.kickstart.plugins.debug',
   'plugins.kickstart.plugins.indent_line',

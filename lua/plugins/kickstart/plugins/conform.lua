@@ -31,27 +31,9 @@ return {
   ---@type conform.setupOpts
   opts = {
     notify_on_error = false,
-    format_on_save = function(bufnr)
-      -- Disable "format_on_save lsp_fallback" for languages that don't
-      -- have a well standardized coding style. You can add additional
-      -- languages here or re-enable it for the disabled ones.
-      local disable_filetypes = {
-        c = true,
-        cpp = true,
-        typescript = true,
-        typescriptreact = true,
-        javascript = true,
-        javascriptreact = true,
-        python = true,
-        sql = true,
-        json = true,
-      }
-      if disable_filetypes[vim.bo[bufnr].filetype] then
-        return nil
-      else
-        return nil
-      end
-    end,
+    -- Explicit: no format-on-save (use `<leader>f` manually). Previously a
+    -- `format_on_save` function always returned nil with dead branch logic.
+    format_on_save = false,
     default_format_opts = {
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
