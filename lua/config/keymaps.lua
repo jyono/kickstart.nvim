@@ -32,7 +32,7 @@ vim.keymap.set('n', '<leader>tf', ':ToggleTerm<CR>', { desc = 'Toggle floating t
 
 vim.keymap.set('x', 'p', '"_dP', { noremap = true, silent = true })
 
-local git_links = require 'custom.git_links'
+local git_links = require 'config.git_links'
 vim.keymap.set({ 'n', 'v' }, '<leader>go', git_links.open_github, { desc = 'Open in GitHub' })
 
 vim.keymap.set('n', '<leader>x', '<cmd>Neotree toggle<cr>', { desc = 'NeoTree Toggle' })

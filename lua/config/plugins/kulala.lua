@@ -1,17 +1,11 @@
 --[[
-  Path: lua/custom/plugins/init.lua
-  Module: custom.plugins
+  Path: lua/config/plugins/kulala.lua
+  Module: config.plugins.kulala
 
   Purpose
-    Lazy.nvim specs for plugins that are not part of the main `config`
-    tree (e.g. HTTP client, experimental additions).
+    Lazy spec for kulala.nvim: HTTP / REST client from the editor.
 
-  Rationale
-    `config.plugins.spec` appends this module last so your personal
-    plugins stay merge-friendly and easy to find. Neo-tree and core stack live
-    under `config.plugins` instead.
-
-  See `:help lazy.nvim-plugin-spec`.
+  See https://github.com/mistweaverco/kulala.nvim
 ]]
 
 ---@module 'lazy'

@@ -8,7 +8,7 @@
 
   Rationale
     Centralizes file-tree UX; `<leader>x` / `<leader>z` maps live in keymaps.lua.
-    Kept separate from `custom.plugins` so “core” navigation stays discoverable.
+    Neo-tree spec lives alongside other Lazy modules under `config.plugins`.
 
   See https://github.com/nvim-neo-tree/neo-tree.nvim
 ]]

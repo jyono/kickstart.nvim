@@ -49,7 +49,7 @@ local mods = {
   'config.plugins.lint',
   'config.plugins.autopairs',
   'config.plugins.neo-tree',
-  'custom.plugins',
+  'config.plugins.kulala',
 }
 
 for _, mod in ipairs(mods) do

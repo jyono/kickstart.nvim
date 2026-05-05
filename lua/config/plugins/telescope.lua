@@ -21,7 +21,7 @@ return {
 
   -- If you would like to switch to a different picker (like snacks, or fzf-lua)
   -- you can disable the Telescope plugin by setting enabled to false and enable
-  -- your replacement picker by requiring it explicitly (e.g. 'custom.plugins.snacks')
+  -- your replacement picker by requiring it explicitly in `config.plugins.spec`
 
   -- Note: If you customize your config for yourself,
   -- it’s best to remove the Telescope plugin config entirely

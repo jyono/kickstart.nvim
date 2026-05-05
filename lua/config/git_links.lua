@@ -1,14 +1,13 @@
 --[[
-  Path: lua/custom/git_links.lua
-  Module: custom.git_links
+  Path: lua/config/git_links.lua
+  Module: config.git_links
 
   Purpose
     Opens the current buffer’s file on GitHub (or compatible origin) in the
     browser, including a line or range anchor from Normal or Visual mode.
 
   Rationale
-    Small, focused utility used by `config.keymaps` (`<leader>go`).
-    Kept under `custom/` so it stays clearly “yours” vs. generated plugin specs.
+    Used by `config.keymaps` (`<leader>go`).
 
   Dependencies: git(1); `vim.ui.open` on Nvim 0.10+, else `open` / `xdg-open` / `cmd start`.
 ]]
