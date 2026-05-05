@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/which_key.lua
+  Module: plugins.kickstart.plugins.which_key
+
+  Purpose
+    Lazy spec for which-key.nvim: discoverable pop-up of pending key sequences
+    and group labels for `<leader>` chains (search, toggle, git hunks, LSP).
+
+  Rationale
+    Loaded on `VimEnter` so it does not delay first screen paint. `spec` entries
+    document chains used elsewhere (Telescope, gitsigns, LSP maps).
+
+  See `:help which-key.nvim.txt`.
+]]
+
 ---@type LazySpec
 return {
 { -- Useful plugin to show you pending keybinds.

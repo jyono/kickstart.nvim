@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/lazy.lua
+  Module: plugins.kickstart.lazy
+
+  Purpose
+    Bootstraps folke/lazy.nvim if missing, prepends it to runtimepath, and calls
+    `lazy.setup()` with the aggregated plugin specification plus UI icon prefs.
+
+  Rationale
+    lazy.nvim must be on `runtimepath` before `require('lazy')`. Keeping clone +
+    setup here isolates plugin-manager mechanics from editor options/keymaps.
+
+  See `:help lazy.nvim.txt`, `:help rtp`.
+]]
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -9,7 +24,7 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-require('lazy').setup(require 'kickstart.plugins.spec', {
+require('lazy').setup(require 'plugins.kickstart.plugins.spec', {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',

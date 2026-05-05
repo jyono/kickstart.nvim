@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/tokyonight.lua
+  Module: plugins.kickstart.plugins.tokyonight
+
+  Purpose
+    Lazy spec for tokyonight.nvim: colorscheme plugin with high priority so it
+    loads before most UI; disables italic comments then sets `colorscheme`.
+
+  Rationale
+    Centralizes theme choice. Swap plugin name + `vim.cmd.colorscheme` here if
+    you change distributions.
+
+  See `:help colorscheme`, plugin README.
+]]
+
 ---@type LazySpec
 return {
 { -- You can easily change to a different colorscheme.

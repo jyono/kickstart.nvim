@@ -1,4 +1,17 @@
--- Neo-tree: https://github.com/nvim-neo-tree/neo-tree.nvim
+--[[
+  Path: lua/plugins/kickstart/plugins/neo-tree.lua
+  Module: plugins.kickstart.plugins.neo-tree
+
+  Purpose
+    Lazy spec for nvim-neo-tree/neo-tree.nvim: filesystem sidebar, reveal/toggle
+    keymaps, and tuned `filesystem` options (hidden files, libuv watcher, root).
+
+  Rationale
+    Centralizes file-tree UX; `<leader>x` / `<leader>z` maps live in keymaps.lua.
+    Kept separate from `custom.plugins` so “core” navigation stays discoverable.
+
+  See https://github.com/nvim-neo-tree/neo-tree.nvim
+]]
 
 ---@module 'lazy'
 ---@type LazySpec

@@ -1,3 +1,19 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/blink.lua
+  Module: plugins.kickstart.plugins.blink
+
+  Purpose
+    Lazy spec for saghen/blink.cmp: completion menu, LSP source, snippets via
+    LuaSnip, signature help, and keymap preset (`super-tab`).
+
+  Rationale
+    Standalone entry complements the `blink.cmp` dependency pinned under
+    `lsp.lua` so capabilities exist before servers start; lazy merges duplicate
+    plugin IDs by version.
+
+  See `:help blink.cmp`.
+]]
+
 ---@type LazySpec
 return {
 { -- Autocompletion

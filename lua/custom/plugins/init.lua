@@ -1,4 +1,18 @@
--- Add plugins here (neo-tree lives in `lua/kickstart/plugins/neo-tree.lua`).
+--[[
+  Path: lua/custom/plugins/init.lua
+  Module: custom.plugins
+
+  Purpose
+    Lazy.nvim specs for plugins that are not part of the main `plugins.kickstart`
+    tree (e.g. HTTP client, experimental additions).
+
+  Rationale
+    `plugins.kickstart.plugins.spec` appends this module last so your personal
+    plugins stay merge-friendly and easy to find. Neo-tree and core stack live
+    under `plugins.kickstart.plugins` instead.
+
+  See `:help lazy.nvim-plugin-spec`.
+]]
 
 ---@module 'lazy'
 ---@type LazySpec

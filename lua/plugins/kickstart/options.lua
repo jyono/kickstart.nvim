@@ -1,4 +1,17 @@
--- Options: see `:help vim.o` and `:help option-list`
+--[[
+  Path: lua/plugins/kickstart/options.lua
+  Module: plugins.kickstart.options
+
+  Purpose
+    Sets buffer-agnostic Neovim options (`vim.o` / `vim.opt`): editing feel,
+    UI chrome, search, splits, and persistence (e.g. undofile).
+
+  Rationale
+    Centralizing options keeps behavior predictable and documents defaults in
+    one place. Clipboard is scheduled after UI enter to avoid slowing startup.
+
+  See `:help vim.o`, `:help option-list`, `:help 'clipboard'`.
+]]
 
 vim.o.number = true
 

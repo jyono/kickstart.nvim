@@ -1,3 +1,19 @@
+--[[
+  Path: lua/plugins/kickstart/keymaps.lua
+  Module: plugins.kickstart.keymaps
+
+  Purpose
+    Non-plugin (or minimally coupled) normal-mode maps: search, diagnostics
+    quickfix, terminal escape, window navigation, GitHub “open in browser,”
+    Neo-tree toggles, and visual paste without clobbering a register.
+
+  Rationale
+    Keeping these maps here avoids scattering `vim.keymap.set` across plugin
+    config files and ensures they exist even before lazy.nvim finishes loading.
+
+  See `:help vim.keymap.set()`, `:help diagnostic-loclist`.
+]]
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

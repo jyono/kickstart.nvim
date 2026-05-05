@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/telescope.lua
+  Module: plugins.kickstart.plugins.telescope
+
+  Purpose
+    Lazy spec for telescope.nvim: fuzzy finder for files, grep, diagnostics,
+    git, help, and LSP pickers; includes fzf-native and ui-select extensions.
+
+  Rationale
+    Large `config` function registers `<leader>s*` maps and theme extensions.
+    Deferred `require('telescope.builtin')` from LSP attach remains valid.
+
+  See `:help telescope`, `:help telescope.setup()`.
+]]
+
 ---@type LazySpec
 return {
 { -- Fuzzy Finder (files, lsp, etc)

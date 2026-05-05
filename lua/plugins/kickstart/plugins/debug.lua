@@ -1,10 +1,17 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
+--[[
+  Path: lua/plugins/kickstart/plugins/debug.lua
+  Module: plugins.kickstart.plugins.debug
+
+  Purpose
+    Lazy spec for nvim-dap + nvim-dap-ui + mason-nvim-dap + nvim-dap-go: debug
+    sessions, UI controls, breakpoint signs, and Go/Delve configurations.
+
+  Rationale
+    Debugging is optional but heavy; isolating DAP keeps optional tooling out of
+    LSP startup. Extend `dap.configurations` for other languages as needed.
+
+  See `:help dap.txt`, plugin READMEs.
+]]
 
 ---@module 'lazy'
 ---@type LazySpec

@@ -1,7 +1,16 @@
 --[[
-  Neovim entrypoint: `lua/kickstart/init.lua` sets options, keymaps, autocommands,
-  diagnostics, then bootstraps lazy.nvim and loads `kickstart.plugins.spec`.
-  Kickstart’s long banner lived here originally; see upstream kickstart.nvim README if you want it back.
+  Path: init.lua (Neovim config root)
+  Module: none — Neovim executes this file before any Lua `require`.
+
+  Purpose
+    Single entrypoint for your configuration. Everything else lives under
+    `lua/` so this file stays small and easy to skim.
+
+  Rationale
+    A minimal root `init.lua` avoids duplicating logic that belongs in modular
+    Lua modules and matches common Neovim + lazy.nvim layouts.
+
+  See `:help config` and `:help lua-require`.
 ]]
 
-require 'kickstart'
+require 'plugins.kickstart'

@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/mini.lua
+  Module: plugins.kickstart.plugins.mini
+
+  Purpose
+    Lazy spec for nvim-mini/mini.nvim: loads `mini.ai`, `mini.surround`, and
+    `mini.statusline` with nerd-font aware icons and a compact location section.
+
+  Rationale
+    Bundles small quality-of-life modules under one plugin id to reduce Lazy
+    node count; adjust `mini.ai` mappings if they collide with Treesitter.
+
+  See `:help mini.nvim`.
+]]
+
 ---@type LazySpec
 return {
 { -- Collection of various small independent plugins/modules

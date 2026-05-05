@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/diagnostics.lua
+  Module: plugins.kickstart.diagnostics
+
+  Purpose
+    One global `vim.diagnostic.config` for how LSP diagnostics render: signs,
+    virtual text, floating previews, underline, and sort order.
+
+  Rationale
+    A single module avoids conflicting `vim.diagnostic.config` calls (e.g. one
+    at startup and another inside LSP setup) overwriting each other.
+
+  See `:help vim.diagnostic.config()`, `:help diagnostic-signs`.
+]]
+
 vim.diagnostic.config {
   severity_sort = true,
   float = { border = 'rounded', source = 'if_many' },

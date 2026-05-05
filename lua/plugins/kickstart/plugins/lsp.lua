@@ -1,3 +1,19 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/lsp.lua
+  Module: plugins.kickstart.plugins.lsp
+
+  Purpose
+    Lazy spec for nvim-lspconfig + Mason + blink.cmp integration: LspAttach
+    keymaps, server table (clangd, gopls, pyright, rust, ts_ls, lua_ls, etc.),
+    Mason tool installer, and 0.11 `vim.lsp.config` / `vim.lsp.enable` wiring.
+
+  Rationale
+    Concentrates all LSP lifecycle logic in one place. Blink is both a
+    dependency (capabilities) and a top-level plugin spec in `blink.lua`.
+
+  See `:help lsp`, `:help mason.nvim`, `:help blink.cmp`.
+]]
+
 ---@type LazySpec
 return {
 {

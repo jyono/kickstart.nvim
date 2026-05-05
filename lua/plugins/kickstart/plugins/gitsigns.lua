@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/gitsigns.lua
+  Module: plugins.kickstart.plugins.gitsigns
+
+  Purpose
+    Lazy spec for lewis6991/gitsigns.nvim: gutter hunks, stage/reset, blame,
+    diff against index / HEAD / default branch, and buffer-local keymaps.
+
+  Rationale
+    Single source of truth for Git-in-editor UX; pairs with which-key groups
+    under `<leader>h` and avoids duplicating gitsigns setup in `init.lua`.
+
+  See `:help gitsigns`.
+]]
+
 ---@type LazySpec
 return {
 { -- Adds git related signs to the gutter, as well as utilities for managing changes

@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/treesitter.lua
+  Module: plugins.kickstart.plugins.treesitter
+
+  Purpose
+    Lazy spec for nvim-treesitter: parser install list, `TSUpdate` build step,
+    highlight/indent toggles, and `lazy = false` so buffers get treesitter early.
+
+  Rationale
+    Syntax/folds/indent for supported languages; `auto_install` pulls missing
+    parsers on demand. Ruby keeps vim regex highlighting per upstream note.
+
+  See `:help nvim-treesitter`.
+]]
+
 ---@type LazySpec
 return {
 { -- Highlight, edit, and navigate code

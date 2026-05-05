@@ -1,3 +1,18 @@
+--[[
+  Path: lua/custom/git_links.lua
+  Module: custom.git_links
+
+  Purpose
+    Opens the current buffer’s file on GitHub (or compatible origin) in the
+    browser, including a line or range anchor from Normal or Visual mode.
+
+  Rationale
+    Small, focused utility used by `plugins.kickstart.keymaps` (`<leader>go`).
+    Kept under `custom/` so it stays clearly “yours” vs. generated plugin specs.
+
+  Dependencies: git(1), xdg-open (Linux); file must be tracked by git.
+]]
+
 local M = {}
 
 M.open_github = function()

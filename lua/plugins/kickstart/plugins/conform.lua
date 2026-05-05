@@ -1,3 +1,18 @@
+--[[
+  Path: lua/plugins/kickstart/plugins/conform.lua
+  Module: plugins.kickstart.plugins.conform
+
+  Purpose
+    Lazy spec for conform.nvim: formatter orchestration (`<leader>f`), per-FT
+    formatter lists (stylua, sql_formatter, prettier), and format-on-save policy.
+
+  Rationale
+    Keeps formatting separate from LSP where you explicitly disable or gate LSP
+    format fallback per filetype.
+
+  See `:help conform.nvim`.
+]]
+
 ---@type LazySpec
 return {
 { -- Autoformat
