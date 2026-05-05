@@ -1,4 +1,17 @@
--- Linting
+--[[
+  Path: lua/plugins/kickstart/plugins/lint.lua
+  Module: plugins.kickstart.plugins.lint
+
+  Purpose
+    Lazy spec for nvim-lint: asynchronous linters per filetype (here Markdown
+    via markdownlint) triggered on buffer enter / write / leaving Insert mode.
+
+  Rationale
+    Complements LSP diagnostics where you want CLI linters or faster feedback.
+    Extend `linters_by_ft` as you add tools to Mason or the host system.
+
+  See `:help nvim-lint.txt`.
+]]
 
 ---@module 'lazy'
 ---@type LazySpec

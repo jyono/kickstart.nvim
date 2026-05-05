@@ -1,9 +1,17 @@
 --[[
---
--- This file is not required for your own configuration,
--- but helps people determine if their system is setup correctly.
---
---]]
+  Path: lua/plugins/kickstart/health.lua
+  Module: plugins.kickstart.health
+
+  Purpose
+    Optional `:checkhealth` provider: Neovim version gate, common CLI tools
+    (git, make, unzip, rg), and contextual notes for Mason-related warnings.
+
+  Rationale
+    Health checks catch environment issues before debugging “mystery” plugin
+    failures. Safe to ignore if you do not run `:checkhealth`; harmless if loaded.
+
+  See `:help health-dev`, `:checkhealth`.
+]]
 
 local check_version = function()
   local verstr = tostring(vim.version())
@@ -20,7 +28,6 @@ local check_version = function()
 end
 
 local check_external_reqs = function()
-  -- Basic utils: `git`, `make`, `unzip`
   for _, exe in ipairs { 'git', 'make', 'unzip', 'rg' } do
     local is_executable = vim.fn.executable(exe) == 1
     if is_executable then

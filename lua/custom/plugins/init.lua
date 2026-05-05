@@ -1,7 +1,18 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
+--[[
+  Path: lua/custom/plugins/init.lua
+  Module: custom.plugins
+
+  Purpose
+    Lazy.nvim specs for plugins that are not part of the main `plugins.kickstart`
+    tree (e.g. HTTP client, experimental additions).
+
+  Rationale
+    `plugins.kickstart.plugins.spec` appends this module last so your personal
+    plugins stay merge-friendly and easy to find. Neo-tree and core stack live
+    under `plugins.kickstart.plugins` instead.
+
+  See `:help lazy.nvim-plugin-spec`.
+]]
 
 ---@module 'lazy'
 ---@type LazySpec
@@ -15,31 +26,9 @@ return {
     },
     ft = { 'http', 'rest' },
     opts = {
-      -- your configuration comes here
       global_keymaps = false,
       global_keymaps_prefix = '<leader>R',
       kulala_keymaps_prefix = '',
-    },
-  },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    lazy = false,
-    opts = {
-      filesystem = {
-        visible = false,
-        window = {
-          mappings = {
-            ['.'] = 'set_root', -- Set current directory as root
-            ['H'] = 'toggle_hidden', -- Toggle hidden files with 'H'
-          },
-        },
-      },
     },
   },
 }
