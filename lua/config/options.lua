@@ -14,6 +14,13 @@
   See `:help vim.o`, `:help option-list`, `:help 'clipboard'`.
 ]]
 
+-- Legacy providers (optional): silence :checkhealth vim.provider if you do not
+-- use :python, :perl, or Node-driven remote plugins. Lua-only configs can leave these off.
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 vim.o.mouse = 'a'
 
 vim.o.showmode = false

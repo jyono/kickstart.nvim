@@ -25,6 +25,9 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup(require 'config.plugins.spec', {
+  -- No luarocks/hererocks: avoids :checkhealth lazy ERROR when hererocks is missing.
+  -- Re-enable if you install a plugin that requires luarocks (:help lazy.nvim-rocks).
+  rocks = { enabled = false },
   ui = {
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
