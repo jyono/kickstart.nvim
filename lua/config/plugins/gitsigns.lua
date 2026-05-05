@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/gitsigns.lua
-  Module: plugins.kickstart.plugins.gitsigns
+  Path: lua/config/plugins/gitsigns.lua
+  Module: config.plugins.gitsigns
 
   Purpose
     Lazy spec for lewis6991/gitsigns.nvim: gutter hunks, stage/reset, blame,

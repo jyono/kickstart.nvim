@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/which_key.lua
-  Module: plugins.kickstart.plugins.which_key
+  Path: lua/config/plugins/which_key.lua
+  Module: config.plugins.which_key
 
   Purpose
     Lazy spec for which-key.nvim: discoverable pop-up of pending key sequences

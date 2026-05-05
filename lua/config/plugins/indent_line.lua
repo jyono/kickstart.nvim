@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/indent_line.lua
-  Module: plugins.kickstart.plugins.indent_line
+  Path: lua/config/plugins/indent_line.lua
+  Module: config.plugins.indent_line
 
   Purpose
     Lazy spec for indent-blankline.nvim (`ibl`): optional vertical guides aligned

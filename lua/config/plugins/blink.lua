@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/blink.lua
-  Module: plugins.kickstart.plugins.blink
+  Path: lua/config/plugins/blink.lua
+  Module: config.plugins.blink
 
   Purpose
     Lazy spec for saghen/blink.cmp: completion menu, LSP source, snippets via

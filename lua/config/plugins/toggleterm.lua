@@ -1,10 +1,10 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/toggleterm.lua
-  Module: plugins.kickstart.plugins.toggleterm
+  Path: lua/config/plugins/toggleterm.lua
+  Module: config.plugins.toggleterm
 
   Purpose
     Lazy spec for akinsho/toggleterm.nvim: floating terminal and the `:ToggleTerm`
-    command used by `<leader>tf` in `plugins.kickstart.keymaps`.
+    command used by `<leader>tf` in `config.keymaps`.
 
   Rationale
     Keymaps referenced ToggleTerm without a plugin; this wires the dependency.

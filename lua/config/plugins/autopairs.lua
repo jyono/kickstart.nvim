@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/autopairs.lua
-  Module: plugins.kickstart.plugins.autopairs
+  Path: lua/config/plugins/autopairs.lua
+  Module: config.plugins.autopairs
 
   Purpose
     Lazy spec for nvim-autopairs: inserts/closes paired brackets and quotes in

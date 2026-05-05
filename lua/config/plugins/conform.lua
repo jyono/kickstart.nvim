@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/conform.lua
-  Module: plugins.kickstart.plugins.conform
+  Path: lua/config/plugins/conform.lua
+  Module: config.plugins.conform
 
   Purpose
     Lazy spec for conform.nvim: formatter orchestration (`<leader>f`), per-FT

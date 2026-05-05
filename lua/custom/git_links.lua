@@ -7,7 +7,7 @@
     browser, including a line or range anchor from Normal or Visual mode.
 
   Rationale
-    Small, focused utility used by `plugins.kickstart.keymaps` (`<leader>go`).
+    Small, focused utility used by `config.keymaps` (`<leader>go`).
     Kept under `custom/` so it stays clearly “yours” vs. generated plugin specs.
 
   Dependencies: git(1); `vim.ui.open` on Nvim 0.10+, else `open` / `xdg-open` / `cmd start`.

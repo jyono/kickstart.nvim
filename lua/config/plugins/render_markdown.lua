@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/render_markdown.lua
-  Module: plugins.kickstart.plugins.render_markdown
+  Path: lua/config/plugins/render_markdown.lua
+  Module: config.plugins.render_markdown
 
   Purpose
     Lazy spec for render-markdown.nvim: in-buffer Markdown preview (no external

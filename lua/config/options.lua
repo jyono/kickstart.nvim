@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/options.lua
-  Module: plugins.kickstart.options
+  Path: lua/config/options.lua
+  Module: config.options
 
   Purpose
     Sets buffer-agnostic Neovim options (`vim.o` / `vim.opt`): editing feel,

@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/lsp.lua
-  Module: plugins.kickstart.plugins.lsp
+  Path: lua/config/plugins/lsp.lua
+  Module: config.plugins.lsp
 
   Purpose
     Lazy spec for nvim-lspconfig + Mason + blink.cmp integration: LspAttach
@@ -44,7 +44,7 @@ return {
     -- LspAttach: buffer-local LSP maps and optional semantic highlight / inlay hints.
     -- See :help LspAttach, :help lsp-vs-treesitter
     vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+      group = vim.api.nvim_create_augroup('config-lsp-attach', { clear = true }),
       callback = function(event)
         -- NOTE: Remember that Lua is a real programming language, and as such it is possible
         -- to define small helper and utility functions so you don't have to repeat yourself.
@@ -72,7 +72,7 @@ return {
         -- before VimEnter, when lazy.nvim has not loaded telescope.nvim yet.
         --
         -- Nvim 0.11+ sets *global* defaults grr/gri/grt/gO → vim.lsp.buf.* (quickfix / loclist).
-        -- Buffer-local maps override. Match kickstart.nvim: grr gri grd gO gW grt (see telescope
+        -- Buffer-local maps override defaults; grr/gri/grd/gO/gW/grt use Telescope pickers.
         -- LspAttach in upstream). `grd` is not a core default — it was only in your fork/telescope.
         map('grr', function() require('telescope.builtin').lsp_references() end, '[R]eferences')
         map('gri', function() require('telescope.builtin').lsp_implementations() end, '[I]mplementation')
@@ -118,7 +118,7 @@ return {
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-          local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+          local highlight_augroup = vim.api.nvim_create_augroup('config-lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
             group = highlight_augroup,
@@ -132,10 +132,10 @@ return {
           })
 
           vim.api.nvim_create_autocmd('LspDetach', {
-            group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+            group = vim.api.nvim_create_augroup('config-lsp-detach', { clear = true }),
             callback = function(event2)
               vim.lsp.buf.clear_references()
-              vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              vim.api.nvim_clear_autocmds { group = 'config-lsp-highlight', buffer = event2.buf }
             end,
           })
         end
@@ -145,7 +145,7 @@ return {
         --
         -- This may be unwanted, since they displace some of your code
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-          -- `<leader>th` is used in keymaps.lua for terminal horizontal split.
+          -- `<leader>th` is used in `config.keymaps` for terminal horizontal split.
           map('<leader>ti', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle [I]nlay hints')
         end
       end,

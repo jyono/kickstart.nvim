@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/guess_indent.lua
-  Module: plugins.kickstart.plugins.guess_indent
+  Path: lua/config/plugins/guess_indent.lua
+  Module: config.plugins.guess_indent
 
   Purpose
     Lazy spec for guess-indent.nvim: detects indentation style per buffer so new

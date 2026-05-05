@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/debug.lua
-  Module: plugins.kickstart.plugins.debug
+  Path: lua/config/plugins/debug.lua
+  Module: config.plugins.debug
 
   Purpose
     Lazy spec for nvim-dap + nvim-dap-ui + mason-nvim-dap + nvim-dap-go: debug

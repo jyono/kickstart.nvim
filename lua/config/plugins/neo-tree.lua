@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/neo-tree.lua
-  Module: plugins.kickstart.plugins.neo-tree
+  Path: lua/config/plugins/neo-tree.lua
+  Module: config.plugins.neo-tree
 
   Purpose
     Lazy spec for nvim-neo-tree/neo-tree.nvim: filesystem sidebar, reveal/toggle
