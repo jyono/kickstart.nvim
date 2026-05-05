@@ -687,14 +687,16 @@ require('lazy').setup({
           -- Defer requiring Telescope until keypress: on `nvim file.py`, LspAttach can run
           -- before VimEnter, when lazy.nvim has not loaded telescope.nvim yet.
           --
-          -- Nvim 0.11+ sets *global* defaults grr/gri/grt/gO → vim.lsp.buf.* which uses
-          -- quickfix / loclist. Buffer-local maps here override those for this buffer.
+          -- Nvim 0.11+ sets *global* defaults grr/gri/grt/gO → vim.lsp.buf.* (quickfix / loclist).
+          -- Buffer-local maps override. Match kickstart.nvim: grr gri grd gO gW grt (see telescope
+          -- LspAttach in upstream). `grd` is not a core default — it was only in your fork/telescope.
           map('grr', function() require('telescope.builtin').lsp_references() end, '[R]eferences')
           map('gri', function() require('telescope.builtin').lsp_implementations() end, '[I]mplementation')
+          map('grd', function() require('telescope.builtin').lsp_definitions() end, '[G]oto [D]efinition')
           map('gO', function() require('telescope.builtin').lsp_document_symbols() end, 'Open Document Symbols')
-
           map('gW', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, 'Open Workspace Symbols')
-
+          -- gopls may error on anonymous func types ("cannot find type name from type func(...)"):
+          -- put the cursor on a named identifier, or use grd on the symbol name — same LSP limit.
           map('grt', function() require('telescope.builtin').lsp_type_definitions() end, '[G]oto [T]ype Definition')
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
