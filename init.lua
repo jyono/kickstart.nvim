@@ -3,8 +3,9 @@
   Module: none — Neovim executes this file before any Lua `require`.
 
   Purpose
-    Single entrypoint for your configuration. Everything else lives under
-    `lua/` so this file stays small and easy to skim.
+    Single entrypoint for your configuration. Core Lua lives under
+    `lua/config/` (options, keymaps, lazy.nvim, plugin specs); personal extras
+    under `lua/custom/`.
 
   Rationale
     A minimal root `init.lua` avoids duplicating logic that belongs in modular
@@ -13,4 +14,4 @@
   See `:help config` and `:help lua-require`.
 ]]
 
-require 'plugins.kickstart'
+require 'config'

@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/telescope.lua
-  Module: plugins.kickstart.plugins.telescope
+  Path: lua/config/plugins/telescope.lua
+  Module: config.plugins.telescope
 
   Purpose
     Lazy spec for telescope.nvim: fuzzy finder for files, grep, diagnostics,

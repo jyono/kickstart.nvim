@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/mini.lua
-  Module: plugins.kickstart.plugins.mini
+  Path: lua/config/plugins/mini.lua
+  Module: config.plugins.mini
 
   Purpose
     Lazy spec for nvim-mini/mini.nvim: loads `mini.ai`, `mini.surround`, and

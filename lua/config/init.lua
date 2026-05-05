@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/init.lua
-  Module: plugins.kickstart
+  Path: lua/config/init.lua
+  Module: config
 
   Purpose
     Orchestrates core editor setup: globals, options, keymaps, autocommands,
@@ -20,8 +20,8 @@ vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
 
-require 'plugins.kickstart.options'
-require 'plugins.kickstart.keymaps'
-require 'plugins.kickstart.autocmds'
-require 'plugins.kickstart.diagnostics'
-require 'plugins.kickstart.lazy'
+require 'config.options'
+require 'config.keymaps'
+require 'config.autocmds'
+require 'config.diagnostics'
+require 'config.lazy'

@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/mini_icons.lua
-  Module: plugins.kickstart.plugins.mini_icons
+  Path: lua/config/plugins/mini_icons.lua
+  Module: config.plugins.mini_icons
 
   Purpose
     Lazy spec for mini.icons: consistent glyphs/highlights for special filenames

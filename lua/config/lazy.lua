@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/lazy.lua
-  Module: plugins.kickstart.lazy
+  Path: lua/config/lazy.lua
+  Module: config.lazy
 
   Purpose
     Bootstraps folke/lazy.nvim if missing, prepends it to runtimepath, and calls
@@ -24,7 +24,10 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-require('lazy').setup(require 'plugins.kickstart.plugins.spec', {
+require('lazy').setup(require 'config.plugins.spec', {
+  -- No luarocks/hererocks: avoids :checkhealth lazy ERROR when hererocks is missing.
+  -- Re-enable if you install a plugin that requires luarocks (:help lazy.nvim-rocks).
+  rocks = { enabled = false },
   ui = {
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',

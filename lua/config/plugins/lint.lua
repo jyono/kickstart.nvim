@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/lint.lua
-  Module: plugins.kickstart.plugins.lint
+  Path: lua/config/plugins/lint.lua
+  Module: config.plugins.lint
 
   Purpose
     Lazy spec for nvim-lint: asynchronous linters per filetype (here Markdown

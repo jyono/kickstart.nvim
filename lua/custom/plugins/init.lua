@@ -3,13 +3,13 @@
   Module: custom.plugins
 
   Purpose
-    Lazy.nvim specs for plugins that are not part of the main `plugins.kickstart`
+    Lazy.nvim specs for plugins that are not part of the main `config`
     tree (e.g. HTTP client, experimental additions).
 
   Rationale
-    `plugins.kickstart.plugins.spec` appends this module last so your personal
+    `config.plugins.spec` appends this module last so your personal
     plugins stay merge-friendly and easy to find. Neo-tree and core stack live
-    under `plugins.kickstart.plugins` instead.
+    under `config.plugins` instead.
 
   See `:help lazy.nvim-plugin-spec`.
 ]]

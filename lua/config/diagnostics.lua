@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/diagnostics.lua
-  Module: plugins.kickstart.diagnostics
+  Path: lua/config/diagnostics.lua
+  Module: config.diagnostics
 
   Purpose
     One global `vim.diagnostic.config` for how LSP diagnostics render: signs,

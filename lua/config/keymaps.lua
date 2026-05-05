@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/keymaps.lua
-  Module: plugins.kickstart.keymaps
+  Path: lua/config/keymaps.lua
+  Module: config.keymaps
 
   Purpose
     Non-plugin (or minimally coupled) normal-mode maps: search, diagnostics

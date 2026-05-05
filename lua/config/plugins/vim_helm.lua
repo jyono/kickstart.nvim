@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/vim_helm.lua
-  Module: plugins.kickstart.plugins.vim_helm
+  Path: lua/config/plugins/vim_helm.lua
+  Module: config.plugins.vim_helm
 
   Purpose
     Lazy spec for towolf/vim-helm: sets `filetype=helm` on Helm templates so

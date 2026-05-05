@@ -7,32 +7,45 @@
     browser, including a line or range anchor from Normal or Visual mode.
 
   Rationale
-    Small, focused utility used by `plugins.kickstart.keymaps` (`<leader>go`).
+    Small, focused utility used by `config.keymaps` (`<leader>go`).
     Kept under `custom/` so it stays clearly “yours” vs. generated plugin specs.
 
-  Dependencies: git(1), xdg-open (Linux); file must be tracked by git.
+  Dependencies: git(1); `vim.ui.open` on Nvim 0.10+, else `open` / `xdg-open` / `cmd start`.
 ]]
 
 local M = {}
 
+---@param url string
+local function open_url(url)
+  if vim.ui and vim.ui.open then
+    vim.ui.open(url)
+    return
+  end
+  local cmd
+  if vim.fn.has 'win32' == 1 then
+    cmd = { 'cmd', '/c', 'start', '', url }
+  elseif vim.fn.has 'macunix' == 1 then
+    cmd = { 'open', url }
+  else
+    cmd = { 'xdg-open', url }
+  end
+  vim.fn.jobstart(cmd, { detach = true })
+end
+
 M.open_github = function()
-  -- Get current file path relative to the git project root
   local file_path = vim.fn.systemlist('git ls-files --full-name ' .. vim.fn.expand '%')[1]
   if not file_path or file_path == '' then
     print 'File not tracked by git.'
     return
   end
 
-  -- Get remote URL and clean it up (handles HTTPS and SSH)
   local remote = vim.fn.system('git config --get remote.origin.url'):gsub('\n', ''):gsub('%.git$', '')
   if remote:match '^git@' then
     remote = remote:gsub(':', '/'):gsub('git@', 'https://')
   end
 
-  -- Get current branch
   local branch = vim.fn.system('git rev-parse --abbrev-ref HEAD'):gsub('\n', '')
 
-  -- Get line numbers (handles single line or visual selection)
   local line_start = vim.fn.line 'v'
   local line_end = vim.fn.line '.'
   if line_start > line_end then
@@ -44,11 +57,8 @@ M.open_github = function()
     line_anchor = 'L' .. line_start .. '-L' .. line_end
   end
 
-  -- Build and open the URL
   local url = string.format('%s/blob/%s/%s#%s', remote, branch, file_path, line_anchor)
-
-  -- Linux only: using xdg-open in the background to avoid freezing Neovim
-  vim.fn.jobstart({ 'xdg-open', url }, { detach = true })
+  open_url(url)
   print 'Opened in GitHub'
 end
 

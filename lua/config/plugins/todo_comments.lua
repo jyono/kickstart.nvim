@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/todo_comments.lua
-  Module: plugins.kickstart.plugins.todo_comments
+  Path: lua/config/plugins/todo_comments.lua
+  Module: config.plugins.todo_comments
 
   Purpose
     Lazy spec for todo-comments.nvim: highlights TODO/FIXME/HACK-style comment

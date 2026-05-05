@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/treesitter.lua
-  Module: plugins.kickstart.plugins.treesitter
+  Path: lua/config/plugins/treesitter.lua
+  Module: config.plugins.treesitter
 
   Purpose
     Lazy spec for nvim-treesitter: parser install list, `TSUpdate` build step,
@@ -45,7 +45,6 @@ return {
       'css',
       'helm',
       'dockerfile',
-      'bash',
       'yaml',
       'sql',
       'hcl',

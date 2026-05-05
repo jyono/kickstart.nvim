@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/tokyonight.lua
-  Module: plugins.kickstart.plugins.tokyonight
+  Path: lua/config/plugins/tokyonight.lua
+  Module: config.plugins.tokyonight
 
   Purpose
     Lazy spec for tokyonight.nvim: colorscheme plugin with high priority so it

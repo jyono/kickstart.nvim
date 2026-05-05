@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/health.lua
-  Module: plugins.kickstart.health
+  Path: lua/config/health.lua
+  Module: config.health
 
   Purpose
     Optional `:checkhealth` provider: Neovim version gate, common CLI tools
@@ -42,7 +42,7 @@ end
 
 return {
   check = function()
-    vim.health.start 'kickstart.nvim'
+    vim.health.start 'nvim configuration'
 
     vim.health.info [[NOTE: Not every warning is a 'must-fix' in `:checkhealth`
 

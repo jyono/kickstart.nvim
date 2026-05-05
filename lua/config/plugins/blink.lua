@@ -1,6 +1,6 @@
 --[[
-  Path: lua/plugins/kickstart/plugins/blink.lua
-  Module: plugins.kickstart.plugins.blink
+  Path: lua/config/plugins/blink.lua
+  Module: config.plugins.blink
 
   Purpose
     Lazy spec for saghen/blink.cmp: completion menu, LSP source, snippets via
@@ -95,14 +95,10 @@ return {
 
     snippets = { preset = 'luasnip' },
 
-    -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-    -- which automatically downloads a prebuilt binary when enabled.
-    --
-    -- By default, we use the Lua implementation instead, but you may enable
-    -- the rust implementation via `'prefer_rust_with_warning'`
-    --
-    -- See :h blink-cmp-config-fuzzy for more information
-    fuzzy = { implementation = 'lua' },
+    -- Rust fuzzy matcher (prebuilt binary on supported platforms). Fixes
+    -- :checkhealth blink “fuzzy lib is not downloaded” when using pure Lua.
+    -- See :h blink-cmp-config-fuzzy
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
 
     -- Shows a signature help window while you type arguments for a function
     signature = { enabled = true },
