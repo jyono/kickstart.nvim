@@ -20,8 +20,9 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lint = require 'lint'
+    -- nvim-lint shells out to `markdownlint`; avoid ENOENT if Mason/npm has not installed it yet.
     lint.linters_by_ft = {
-      markdown = { 'markdownlint' }, -- Make sure to install `markdownlint` via mason / npm
+      markdown = vim.fn.executable 'markdownlint' == 1 and { 'markdownlint' } or {},
     }
 
     -- To allow other plugins to add linters to require('lint').linters_by_ft,

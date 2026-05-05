@@ -355,6 +355,7 @@ return {
       'stylua', -- Used to format Lua code
       'sql-formatter',
       'prettier',
+      'markdownlint', -- CLI for nvim-lint markdown (see `config.plugins.lint`)
       'staticcheck',
       'goimports',
       'gofumpt',
